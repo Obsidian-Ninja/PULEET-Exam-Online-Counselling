@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PULEET 2024-Panjab University</title>
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+        .vacant-seats {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<%- include('partial/header'); -%>
+
+<div class="container mt-5">
+    <div class="registration bg-light p-4 rounded shadow-sm">
+        <h2 id="reg" class="mb-4">Fill out the following details:</h2>
+        <form id="collegeRegistrationForm" action="/register/college" method="POST">
+            <div class="mb-3">
+                <label for="collegeName" class="form-label">Name of College:</label>
+                <input type="text" id="collegeName" name="collegeName" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="collegeEmail" class="form-label">College Email:</label>
+                <input type="email" id="collegeEmail" name="collegeEmail" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="collegePassword" class="form-label">Password:</label>
+                <input type="password" id="collegePassword" name="collegePassword" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="branch" class="form-label">Branch Offered:</label>
+                <select id="branch" name="branch" class="form-select" onchange="showVacantSeats()" required>
+                    <option value="">Select Branch</option>
+                    <option value="cse">Computer Science</option>
+                    <option value="it">Information Technology</option>
+                    <option value="ece">Electronics and Communication</option>
+                    <option value="mech">Mechanical</option>
+                    <option value="bio">Biotechnology</option>
+                </select>
+            </div>
+
+            <div id="vacantSeatsContainer">
+                <!-- Computer Science -->
+                <div id="cseSeats" class="vacant-seats">
+                    <h5>Computer Science</h5>
+                    <div class="mb-3">
+                        <label for="cse_general" class="form-label">General:</label>
+                        <input type="number" id="cse_general" name="cse_general" class="form-control" min="0">
+                    </div>
+                    <div class="mb-3">
+                        <label for="cse_sc" class="form-label">SC:</label>
+                        <input type="number" id="cse_sc" name="cse_sc" class="form-control" min="0">
+                    </div>
+                    <div class="mb-3">
+                        <label for="cse_st" class="form-label">ST:</label>
+                        <input type="number" id="cse_st" name="cse_st" class="form-control" min="0">
+                    </div>
+                    <div class="mb-3">
+                        <label for="cse_backward_class" class="form-label">Backward Class:</label>
+                        <input type="number" id="cse_backward_class" name="cse_backward_class" class="form-control" min="0">
+                    </div>
+                    <div class="mb-3">
+                        <label for="cse_sports" class="form-label">Sports:</label>
+                        <input type="number" id="cse_sports" name="cse_sports" class="form-control" min="0">
+                    </div>
+                    <div class="mb-3">
+                        <label for="cse_defence" class="form-label">Defence:</label>
+                        <input type="number" id="cse_defence" name="cse_defence" class="form-control" min="0">
+                    </div>
+                    <div class="mb-3">
+                        <label for="cse_disability" class="form-label">Person with Disability:</label>
+                        <input type="number" id="cse_disability" name="cse_disability" class="form-control" min="0">
+                    </div>
+                    <div class="mb-3">
+                        <label for="cse_riot_victim" class="form-label">Riots/Terrorist Victim:</label>
+                        <input type="number" id="cse_riot_victim" name="cse_riot_victim" class="form-control" min="0">
+                    </div>
+                    <div class="mb-3">
+                        <label for="cse_freedom_fighter" class="form-label">Freedom Fighter:</label>
+                        <input type="number" id="cse_freedom_fighter" name="cse_freedom_fighter" class="form-control" min="0">
+                    </div>
+                </div>
+
+                <!-- Information Technology -->
+                <div id="itSeats" class="vacant-seats">
+                    <h5>Information Technology</h5>
+                    <div class="mb-3">
+                        <label for="it_general" class="form-label">General:</label>
+                        <input type="number" id="it_general" name="it_general" class="form-control" min="0">
+                    </div>
+                    <div class="mb-3">
+                        <label for="it_sc" class="form-label">SC:</label>
+                        <input type="number" id="it_sc" name="it_sc" class="form-control" min="0">
+                    </div>
+                    <div class="mb-3">
+                        <label for="it_st" class="form-label">ST:</label>
+                        <input type="number" id="it_st" name="it_st" class="form-control" min="0">
+                    </div>
+                    <div class="mb-3">
+                        <label for="it_backward_class" class="form-label">Backward Class:</label>
+                        <input type="number" id="it_backward_class" name="it_backward_class" class="form-control" min="0">
+                    </div>
+                    <div class="mb-3">
+                        <label for="it_sports" class="form-label">Sports:</label>
+                        <input type="number" id="it_sports" name="it_sports" class="form-control" min="0">
+                    </div>
+                    <div class="mb-3">
+                        <label for="it_defence" class="form-label">Defence:</label>
+                        <input type="number" id="it_defence" name="it_defence" class="form-control" min="0">
+                    </div>
+                    <div class="mb-3">
+                        <label for="it_disability" class="form-label">Person with Disability:</label>
+                        <input type="number" id="it_disability" name="it_disability" class="form-control" min="0">
+                    </div>
+                    <div class="mb-3">
+                        <label for="it_riot_victim" class="form-label">Riots/Terrorist Victim:</label>
+                        <input type="number" id="it_riot_victim" name="it_riot_victim" class="form-control" min="0">
+                    </div>
+                    <div class="mb-3">
+                        <label for="it_freedom_fighter" class="form-label">Freedom Fighter:</label>
+                        <input type="number" id="it_freedom_fighter" name="it_freedom_fighter" class="form-control" min="0">
+                    </div>
+                </div>
+
+                <!-- Electronics and Communication -->
+                <div id="eceSeats" class="vacant-seats">
+                    <h5>Electronics and Communication</h5>
+                    <div class="mb-3">
+                        <label for="ece_general" class="form-label">General:</label>
+                        <input type="number" id="ece_general" name="ece_general" class="form-control" min="0">
+                    </div>
+                    <div class="mb-3">
+                        <label for="ece_sc" class="form-label">SC:</label>
+                        <input type="number" id="ece_sc" name="ece_sc" class="form-control" min="0">
+                    </div>
+                    <div class="mb-3">
+                        <label for="ece_st" class="form-label">ST:</label>
+                        <input type="number" id="ece_st" name="ece_st" class="form-control" min="0">
+                    </div>
+                    <div class="mb-3">
+                        <label for="ece_backward_class" class="form-label">Backward Class:</label>
+                        <input type="number" id="ece_backward_class" name="ece_backward_class" class="form-control" min="0">
+                    </div>
+                    <div class="mb-3">
+                        <label for="ece_sports" class="form-label">Sports:</label>
+                        <input type="number" id="ece_sports" name="ece_sports" class="form-control" min="0">
+                    </div>
+                    <div class="mb-3">
+                        <label for="ece_defence" class="form-label">Defence:</label>
+                        <input type="number" id="ece_defence" name="ece_defence" class="form-control" min="0">
+                    </div>
+                    <div class="mb-3">
+                        <label for="ece_disability" class="form-label">Person with Disability:</label>
+                        <input type="number" id="ece_disability" name="ece_disability" class="form-control" min="0">
+                    </div>
+                    <div class="mb-3">
+                        <label for="ece_riot_victim" class="form-label">Riots/Terrorist Victim:</label>
+                        <input type="number" id="ece_riot_victim" name="ece_riot_victim" class="form-control" min="0">
+                    </div>
+                    <div class="mb-3">
+                        <label for="ece_freedom_fighter" class="form-label">Freedom Fighter:</label>
+                        <input type="number" id="ece_freedom_fighter" name="ece_freedom_fighter" class="form-control" min="0">
+                    </div>
+                </div>
+
+                <!-- Mechanical -->
+                <div id="mechSeats" class="vacant-seats">
+                    <h5>Mechanical</h5>
+                    <div class="mb-3">
+                        <label for="mech_general" class="form-label">General:</label>
+                        <input type="number" id="mech_general" name="mech_general" class="form-control" min="0">
+                    </div>
+                    <div class="mb-3">
+                        <label for="mech_sc" class="form-label">SC:</label>
+                        <input type="number" id="mech_sc" name="mech_sc" class="form-control" min="0">
+                    </div>
+                    <div class="mb-3">
+                        <label for="mech_st" class="form-label">ST:</label>
+                        <input type="number" id="mech_st" name="mech_st" class="form-control" min="0">
+                    </div>
+                    <div class="mb-3">
+                        <label for="mech_backward_class" class="form-label">Backward Class:</label>
+                        <input type="number" id="mech_backward_class" name="mech_backward_class" class="form-control" min="0">
+                    </div>
+                    <div class="mb-3">
+                        <label for="mech_sports" class="form-label">Sports:</label>
+                        <input type="number" id="mech_sports" name="mech_sports" class="form-control" min="0">
+                    </div>
+                    <div class="mb-3">
+                        <label for="mech_defence" class="form-label">Defence:</label>
+                        <input type="number" id="mech_defence" name="mech_defence" class="form-control" min="0">
+                    </div>
+                    <div class="mb-3">
+                        <label for="mech_disability" class="form-label">Person with Disability:</label>
+                        <input type="number" id="mech_disability" name="mech_disability" class="form-control" min="0">
+                    </div>
+                    <div class="mb-3">
+                        <label for="mech_riot_victim" class="form-label">Riots/Terrorist Victim:</label>
+                        <input type="number" id="mech_riot_victim" name="mech_riot_victim" class="form-control" min="0">
+                    </div>
+                    <div class="mb-3">
+                        <label for="mech_freedom_fighter" class="form-label">Freedom Fighter:</label>
+                        <input type="number" id="mech_freedom_fighter" name="mech_freedom_fighter" class="form-control" min="0">
+                    </div>
+                </div>
+
+                <!-- Biotechnology -->
+                <div id="bioSeats" class="vacant-seats">
+                    <h5>Biotechnology</h5>
+                    <div class="mb-3">
+                        <label for="bio_general" class="form-label">General:</label>
+                        <input type="number" id="bio_general" name="bio_general" class="form-control" min="0">
+                    </div>
+                    <div class="mb-3">
+                        <label for="bio_sc" class="form-label">SC:</label>
+                        <input type="number" id="bio_sc" name="bio_sc" class="form-control" min="0">
+                    </div>
+                    <div class="mb-3">
+                        <label for="bio_st" class="form-label">ST:</label>
+                        <input type="number" id="bio_st" name="bio_st" class="form-control" min="0">
+                    </div>
+                    <div class="mb-3">
+                        <label for="bio_backward_class" class="form-label">Backward Class:</label>
+                        <input type="number" id="bio_backward_class" name="bio_backward_class" class="form-control" min="0">
+                    </div>
+                    <div class="mb-3">
+                        <label for="bio_sports" class="form-label">Sports:</label>
+                        <input type="number" id="bio_sports" name="bio_sports" class="form-control" min="0">
+                    </div>
+                    <div class="mb-3">
+                        <label for="bio_defence" class="form-label">Defence:</label>
+                        <input type="number" id="bio_defence" name="bio_defence" class="form-control" min="0">
+                    </div>
+                    <div class="mb-3">
+                        <label for="bio_disability" class="form-label">Person with Disability:</label>
+                        <input type="number" id="bio_disability" name="bio_disability" class="form-control" min="0">
+                    </div>
+                    <div class="mb-3">
+                        <label for="bio_riot_victim" class="form-label">Riots/Terrorist Victim:</label>
+                        <input type="number" id="bio_riot_victim" name="bio_riot_victim" class="form-control" min="0">
+                    </div>
+                    <div class="mb-3">
+                        <label for="bio_freedom_fighter" class="form-label">Freedom Fighter:</label>
+                        <input type="number" id="bio_freedom_fighter" name="bio_freedom_fighter" class="form-control" min="0">
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary mt-3">Register</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    function showVacantSeats() {
+        const branch = document.getElementById('branch').value;
+        const allSeats = document.querySelectorAll('.vacant-seats');
+        allSeats.forEach(seat => seat.style.display = 'none');
+        if (branch) {
+            document.getElementById(`${branch}Seats`).style.display = 'block';
+        }
+    }
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.14/dist/umd/popper.min.js" integrity="sha384-P2vsh47v8J8kF+M7eC2Pe91I3zM6Usm2U4I3xKZ4HgHnjHo4eMECITAAJRe4a7W" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-5o6rzeFkvPTEKPmrCj4f08GgS5LLEpeIGjN1DbM0aQYy/vZa+9a2Za9TfL13V6pb" crossorigin="anonymous"></script>
+</body>
+</html>

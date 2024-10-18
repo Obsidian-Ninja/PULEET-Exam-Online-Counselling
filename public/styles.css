@@ -1,0 +1,512 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* nav bar */
+/* Dropdown Container */
+.nav-item.dropdown {
+    position: relative;
+  }
+  
+  /* Dropdown Toggle */
+  .nav-link.dropdown-toggle {
+    font-weight: bold;
+    color: #333;
+    transition: color 0.3s ease;
+  }
+  
+  .nav-link.dropdown-toggle:hover {
+    color: #007bff; /* Change to your preferred color */
+  }
+  
+  /* Dropdown Menu */
+  .dropdown-menu {
+    border-radius: 10px; /* More pronounced rounded corners */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Slightly more pronounced shadow */
+    background-color: #fff; /* White background */
+    padding: 0; /* Remove default padding */
+    margin-top: 0.5rem; /* Space between dropdown toggle and menu */
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Smooth transition */
+    opacity: 0; /* Initially hidden */
+    transform: translateY(-10px); /* Start slightly above */
+    position: absolute; /* Absolute positioning for dropdown menu */
+    left: 0;
+    width: max-content; /* Adjust width to content */
+    z-index: 1000; /* Ensure it's above other content */
+  }
+  
+  /* Show dropdown on hover */
+  .nav-item.dropdown:hover .dropdown-menu {
+    opacity: 1; /* Fully visible */
+    transform: translateY(0); /* Slide into place */
+  }
+  
+  /* Dropdown Items */
+  .dropdown-item {
+    position: relative;
+    padding: 12px 20px; /* Increased padding for larger items */
+    font-size: 16px; /* Larger font size */
+    color: #333;
+    transition: color 0.3s ease;
+    overflow: hidden; /* Ensures underline effect stays within bounds */
+  }
+  
+  .dropdown-item::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px; /* Thickness of the underline */
+    width: 0;
+    background-color: #007bff; /* Underline color */
+    transition: width 0.3s ease; /* Smooth underline animation */
+  }
+  
+  .dropdown-item:hover::after {
+    width: 100%; /* Underline spans the full width on hover */
+  }
+  
+  .dropdown-item:hover {
+    color: #007bff; /* Text color on hover */
+  }
+  
+
+.dropdown-menu .dropdown-item:hover {
+    background-color: #052963;
+    color: #ffffff;
+}
+
+#header0 ul {
+    display: flex;
+    flex-direction: row;
+    background-color: #F5F5F5; /* Grey color */
+    padding: 10px;
+}
+
+#header0 ul li{
+    margin-right: 20px;
+    color: black; /* White text color */
+    font-weight: 600;
+    list-style: none;
+}
+#header0 ul a{
+    text-decoration: none;
+    color: #0056b3;
+}
+
+.department-info {
+    margin-left: auto; /* Pushes the department info to the right */
+    text-align: right;
+}
+
+.header {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 5px 20px;
+}
+
+
+@media (min-width: 768px) { /* Adjust for tablets and larger devices */
+    .header {
+        flex-direction: row;
+    }
+    #header2 {
+        margin: 0 auto; /* Center text on larger screens */
+    }
+}
+
+#header1 > img {
+    max-width: 125px;
+    margin-left: 10px; /* Adjust margin to move the logo a little to the right */
+}
+
+#header2 {
+    text-align: center;
+}
+
+.navbar-nav .nav-link {
+    font-weight: bold; /* or use 'font-weight: 700;' for strong */
+  }
+@media (min-width: 768px) {
+    .navbar-nav .nav-item:hover .nav-link {
+      color: #ffa705 !important;
+      text-decoration: underline !important;
+    }
+  }
+
+#latest-news {
+    background-color: #052963;
+    padding: 3px;
+    padding-left: 50px;
+    padding-right: 50px;
+    color: white;
+    display: grid;
+    grid-template-columns: auto 1fr; /* Two columns: first is auto-sized, second takes up remaining space */
+    align-items: center;
+    width: 100%;
+    gap: 10px;
+}
+
+#latest-news div {
+    flex: 1;
+}
+
+#latest-news marquee {
+    white-space: nowrap; /* Prevent line breaks within marquee */
+    overflow: hidden; /* Hide overflowing content */
+    width: 100%; /* Make the marquee stretch across the entire width */
+}
+
+.content {
+    flex: 1;
+    padding-top: 100px; /* Adjust as needed to prevent header overlap */
+    padding-bottom: 100px; /* Adjust as needed to prevent footer overlap */
+}
+
+#footer3 > ul{
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    background-color: #2a2a2a;
+    margin-bottom: 0;
+    padding: 10px;
+    justify-content: center;
+    gap: 20px;
+}
+#footer3 ul li a{
+    color: white;
+    text-decoration: none;
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+}
+@media (max-width: 768px) { 
+    #footer3 > ul{
+        flex-direction: column;
+        align-items: center;
+        gap: 0px;
+    }
+}
+
+
+
+.footer{
+    background-color: black;
+    padding: 20px;
+    width: 100%;
+}
+#footer1,
+#footer2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+#footer1 > h6{
+    color: white;
+}
+#footer2 > div {
+    margin: 10px; 
+}
+
+@media (min-width: 768px) { 
+    #footer2 {
+        flex-direction: row;
+        justify-content: center;
+    }
+}
+
+#footer2 img {
+    max-width: 100px; 
+}
+
+/*header 0 disapear*/
+
+@media screen and (max-width:768px){
+    #header0{
+        display: none;
+    }
+}
+
+
+/*conatct us*/
+
+.contactus{
+    margin: 50px;
+    margin-top: 0;
+}
+
+.contactus > div > img{
+    float: right;
+    max-width: 300px;
+    margin-left: 20px;
+}
+
+.contactus div p{
+    font-size: 18px;
+}
+
+/*terms and coditions*/
+
+#tandc{
+    margin: 50px;
+}
+
+#tandc p{
+    font-size: 18px;
+}
+
+/* copyright policy */
+
+#copyright{
+    margin: 50px;
+}
+
+#copyright p{
+    font-size: 18px;
+}
+
+/* hyperlink policy */
+
+#hyperlink{
+    margin: 50px;
+}
+
+#hyperlink p{
+    font-size: 18px;
+}
+
+/* privacy policy */
+
+#privacy{
+    margin: 50px;
+}
+
+#privacy p{
+    font-size: 18px;
+}
+
+/* home */
+
+#home{
+    margin: 50px;
+}
+
+#home{
+    font-size: 18px;
+}
+
+#home > h2{
+    text-align: center;
+    color: #052963;
+}
+
+#home div p{
+    font-size: 19px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+
+.notice{
+    border: 1px dashed red;
+    padding: 10px;
+}
+
+.notice ul{
+    list-style: none;
+    font-weight: bold;
+}
+
+.notice ul a{
+    text-decoration: none;
+    color: blue;
+}
+
+/* online reg */
+
+#online_reg{
+    margin: 50px;
+}
+
+#online_reg div {
+    text-align: center;
+    
+}
+
+#online_reg div a{
+    color: #052963;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: xx-large;
+    
+}
+
+#online_reg div a:hover{
+    color:  #ebb40d;
+}
+
+
+/* sign in */
+
+/* Assume there's some content above and below the sign-in box */
+
+#sign_in{
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    margin-bottom: 45px;
+}
+
+.signin-box {
+    margin: 40px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+    align-items: center;
+    width: 360px;
+    height: auto;
+    padding-bottom: 30px;
+  }
+  
+  .signin-box img{
+    max-width: 120px;
+    margin: 10px;
+
+  }
+
+  .signin-box p{
+    margin: 10px;
+  }
+
+  .signin-box h2 {
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .signin-box input[type="text"],
+  .signin-box input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  .signin-box input[type="submit"] {
+    background-color: #052963;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    width:100%; /* Adjust as needed */
+  }
+  
+  .signin-box input[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+  
+
+
+  /* Existing CSS code */
+
+.registration{
+    margin: 30px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    
+}
+
+
+/*form*/
+
+.registration {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: auto;
+}
+
+#registrationform{
+    display: grid;
+    gap: 10px;
+}
+label {
+    font-weight: bold;
+}
+input[type="text"],
+input[type="number"],
+input[type="date"],
+input[type="email"],
+input[type="password"],
+input[type="tel"],
+select,
+textarea {
+    width: calc(100% - 20px);
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+input[type="submit"] {
+    background-color: #052963;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    width: 100%;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+    width: 100%;
+}
+
+
+.registration{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    width: 40%;
+    text-align: left;
+    padding: 20px;
+}
+
+@media screen and (max-width: 768px) {
+    .registration {
+        width: 90%;
+    }
+}
+
+#reg{
+    text-align: center;
+}
+

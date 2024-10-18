@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admission Counselling</title>
+</head>
+<body>
+    <h1>Admission Counselling Results</h1>
+    <table border="1">
+        <tr>
+            <th>Name</th>
+            <th>Rank</th>
+            <th>Assigned College</th>
+            <th>Branch</th>
+            <th>Category</th>
+        </tr>
+        <% if (typeof allocatedStudents !== 'undefined' && allocatedStudents.length > 0) { %>
+            <% allocatedStudents.forEach(student => { %>
+                <tr>
+                    <td><%= student.name %></td>
+                    <td><%= student.rank %></td>
+                    <td><%= student.assignedCollege.name %></td>
+                    <td><%= student.assignedCollege.branch %></td>
+                    <td><%= student.category %></td>
+                </tr>
+            <% }); %>
+        <% } else { %>
+            <tr>
+                <td colspan="5">No students allocated</td>
+            </tr>
+        <% } %>
+    </table>
+</body>
+</html>
